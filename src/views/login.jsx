@@ -1,8 +1,66 @@
+import { isDisabled } from "@testing-library/user-event/dist/utils";
+import { useDispatch } from "react-redux"
+import { useNavigate } from "react-router-dom"
+import { UserMsg } from '../cmps/user-msg';
+import { useFormRegister } from '../hooks/useFormRegister';
+import { doLogin, resetErrorMsg } from "../store/user/user.actions";
+import { useEffect } from 'react';
 
 export const Login = () => {
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const [register, setUser, user] = useFormRegister({
+        username: '',
+        password: ''
+    })
+
+    const isDisabled = (user.username && user.password) ? false : true
+
+    useEffect(() => {
+        console.log(user)
+    }, [user])
+
+    const onSubmitForm = async (ev) => {
+        ev.preventDefault()
+        try {
+            const loggedInUser = await dispatch(doLogin(user))
+            setUser({ username: '', password: '' })
+            if (loggedInUser) navigate('/user')
+        } catch (err) {
+            console.error('Error:', err)
+        }
+
+    }
+
+    const onResetErrorMsg = () => {
+        dispatch(resetErrorMsg())
+    }
+
     return (
-        <section>
-            <h1>Hello from Login</h1>
+        <section className="login">
+            <h1 className="title">Login</h1>
+            <form className="login-form" onSubmit={onSubmitForm}>
+                <input
+                    type="text"
+                    className="username-input"
+                    autoFocus
+                    required
+                    {...register('username', 'text')}
+                    placeholder="Enter username"
+                    onFocus={onResetErrorMsg}
+                />
+                <input
+                    type="password"
+                    className="password-input"
+                    required
+                    {...register('password', 'password')}
+                    placeholder="Enter password"
+                    onFocus={onResetErrorMsg}
+                />
+                <UserMsg />
+                <button className="btn-login" disabled={isDisabled} onClick={onSubmitForm}>Login</button>
+            </form>
         </section>
     )
 }

@@ -12,16 +12,8 @@ export class RootCmp extends React.Component {
             <div className='app'>
                 <Routes>
                     {routes.map(route => {
-                        console.log('route:', route)
-                        const nestedRoute = route.nestedRoute
-
                         return <Route key={route.path} exact={true}
                             element={route.component} path={route.path} >
-
-                            {nestedRoute &&
-                                <Route key={nestedRoute.path} exact={true}
-                                    element={nestedRoute.component} path={nestedRoute.path} />
-                            }
                         </Route>
                     })}
                 </Routes>
