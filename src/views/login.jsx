@@ -17,16 +17,17 @@ export const Login = () => {
 
     const isDisabled = (user.username && user.password) ? false : true
 
-    useEffect(() => {
-        console.log(user)
-    }, [user])
+    // useEffect(() => {
+    //     console.log('user from cmp use effect',user)
+    // }, [user])
 
     const onSubmitForm = async (ev) => {
         ev.preventDefault()
         try {
             const loggedInUser = await dispatch(doLogin(user))
+            console.log('loggedInUser:', loggedInUser)
             setUser({ username: '', password: '' })
-            if (loggedInUser) navigate('/user')
+            if(loggedInUser) navigate('/user')
         } catch (err) {
             console.error('Error:', err)
         }
