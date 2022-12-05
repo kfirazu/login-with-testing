@@ -40,7 +40,7 @@ export const Login = () => {
 
     return (
         <section className="login">
-            <h1 className="title">Login</h1>
+            <h1 className="title">Sign-in</h1>
             <form className="login-form" onSubmit={onSubmitForm}>
                 <input
                     type="text"
@@ -60,7 +60,7 @@ export const Login = () => {
                     onFocus={onResetErrorMsg}
                 />
                 <UserMsg />
-                <button className="btn-login" disabled={isDisabled} onClick={onSubmitForm}>Login</button>
+                <button className="btn-login" disabled={isDisabled} onClick={onSubmitForm}>Sign-in</button>
             </form>
         </section>
     )

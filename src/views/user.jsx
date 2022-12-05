@@ -10,9 +10,9 @@ export const User = () => {
     }
     return (
         <section className="user">
-            <h2>Welcome {user.name}</h2>
-            <img src={user.imgUrl} alt="user-image" />
-            <button onClick={onGoBack}>Back</button>
+            <h2 className='greet-user'>Welcome {user.name}</h2>
+            <img className='user-img' src={user.imgUrl} alt="user-image" />
+            <button className='btn-back' onClick={onGoBack}>Back</button>
             
 
         </section>
