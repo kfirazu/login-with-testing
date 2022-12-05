@@ -1,0 +1,25 @@
+.user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .greet-user {
+        font-size: rem(25px);
+    }
+
+    .user-img {
+        padding: rem(10px);
+    }
+
+    .btn-back {
+        margin-top: rem(20px);
+        padding: rem(10px) rem(15px);
+        border-radius: rem(5px);
+        font-size: 1rem;
+        border: 1px solid #2d2d2d;
+        cursor: pointer;
+        background-color: rgb(200, 200, 195);
+        color: $clr4;
+
+    }
+}
