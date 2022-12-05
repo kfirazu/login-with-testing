@@ -1,7 +1,7 @@
 import { userService } from "../../services/user.service.js";
 
 const _setUser = (user) => ({ type: 'SET_USER', user })
-const _setError = (error) => ({ type: 'SET_ERROR', error })
+const _setError = (err) => ({ type: 'SET_ERROR', err })
 
 export function doLogin({ username, password }) {
 
